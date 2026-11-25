@@ -1,10 +1,13 @@
 package dev.ia;
 
+import jakarta.enterprise.context.ApplicationScoped;
+
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+@ApplicationScoped
 public class BookingService {
 
     private final Map<Long, Booking> bookings = new HashMap<>();
