@@ -18,13 +18,12 @@ public class BookingTools {
     }
 
     @Tool("""
-            Cancela uma reserva existente.
-            Para confirmar o cancelamento, é necessário fornecer o id da reserva (bookingId)
-            e o último nome do cliente (customerLastName).
-            """)
-    public String cancelBooking(long bookingId, String customerLastName){
-        return bookingService.cancelBooking(bookingId, customerLastName)
-                .map(booking -> "Reserva " + booking + " cancelada com sucesso")
+        Cancela uma reserva existente com base no seu ID (bookingId).
+        O usuário deve estar autenticado.
+    """)
+    public String cancelBooking(long bookingId) {
+        return bookingService.cancelBooking(bookingId)
+                .map(b -> "Reserva " + b.id() + " cancelada com sucesso.")
                 .orElse("Não foi possível cancelar a reserva. Verifique se o ID está correto e se você tem permissão.");
     }
 }
